@@ -8,6 +8,6 @@ class Barang extends Model
 {
     protected $table        = 'barang';
     protected $fillable     = [
-        'nama_barang','desc','status','status_keterangan','total','tanggal_masuk','barcode','kategori_id','jurusan_id','harga'
+        'nama_barang','desc','status','status_keterangan','total','tgl_masuk','barcode','kategori_id','jurusan_id','harga'
     ];
 }

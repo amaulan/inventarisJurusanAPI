@@ -1,19 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::group(['prefix' => 'api'], function() {
@@ -41,7 +30,7 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('/update',  'Api\RuanganController@update');
     });
 
-     Route::group(['prefix' => 'supplier'], function(){
+    Route::group(['prefix' => 'supplier'], function(){
         Route::post('/',        'Api\SupplierController@index');
         Route::post('/store',   'Api\SupplierController@store');
         Route::post('/delete',  'Api\SupplierController@delete');
@@ -50,7 +39,10 @@ Route::group(['prefix' => 'api'], function() {
     });
 
     Route::group(['prefix' => 'barang'], function(){
-        
-    })
-
+        Route::post('/',        'Api\BarangController@index');
+        Route::post('/store',   'Api\BarangController@store');
+        Route::post('/delete',  'Api\BarangController@delete');
+        Route::post('/show',    'Api\BarangController@show');
+        Route::post('/update',  'Api\BarangController@update');
+    });
 });

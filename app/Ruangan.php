@@ -11,4 +11,13 @@ class Ruangan extends Model
         'ruangan_nama',
         'desc'
     ];
+
+     public function barang(){
+                return $this->belongsToMany(
+                    Barang::class,
+                    'barang_ruangan',
+                    'ruangan_id',
+                    'barang_id'
+                );
+    }
 }

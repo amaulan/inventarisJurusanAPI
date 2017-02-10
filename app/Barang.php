@@ -10,4 +10,13 @@ class Barang extends Model
     protected $fillable     = [
         'nama_barang','desc','status','status_keterangan','total','tgl_masuk','barcode','kategori_id','jurusan_id','harga'
     ];
+
+    public function ruangan(){
+                return $this->belongsToMany(
+                    Ruangan::class,
+                    'barang_ruangan',
+                    'ruangan_id',
+                    'barang_id'
+                );
+    }
 }

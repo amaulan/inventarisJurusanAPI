@@ -22,7 +22,7 @@ class BarangController extends Controller
     {
         $res['code']    = 200;
         $res['message']  = 'ok'; 
-        $res['data']  = self::$table->all();
+        $res['data']  = self::$table->with('ruangan')->get();
         return response()->json($res);
     }
 

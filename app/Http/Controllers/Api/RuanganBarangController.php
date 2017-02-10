@@ -5,28 +5,30 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\History;
+use App\Ruangan;
 
-class HistoryController extends Controller
+class RuanganBarangController extends Controller
 {
     public static $table;
+    public static $log;
 
-    public function __construct(History $history)
+    public function __construct(Ruangan $ruangan, History $history)
     { 
-        self::$table = $history;
+        self::$table = $ruangan;
+        self::$log   = $history;
     }
-    
     public function index()
     {
-        $res['code']     = 200;
+        echo 1;
+        $res['code']    = 200;
         $res['message']  = 'ok'; 
-        $res['data']     = self::$table->all();
+        $res['data']  = self::$table->with('barang')->get();
         return response()->json($res);
     }
 
-    public function show(Request $request)
+   public function show(Request $request)
     {
-        $data = self::$table->find($request->id);
+        $data = self::$table->with('barang')->where('id','=',$request->id)->get();
         if(!count($data))
         {
             return response('Not Found', 404);

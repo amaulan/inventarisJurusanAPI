@@ -4,14 +4,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('api/login', 'LoginController@doLogin');
 
-Route::group(['prefix' => 'api'], function() {
+Route::group(['prefix' => 'api','middleware' => ['checklogin']], function() {
+
     Route::group(['prefix' => 'jurusan'], function() {
         Route::post('/',        'Api\JurusanController@index');
         Route::post('/store',   'Api\JurusanController@store');
         Route::post('/delete',  'Api\JurusanController@delete');
         Route::post('/show',    'Api\JurusanController@show');
-        Route::post('/update',    'Api\JurusanController@update');
+        Route::post('/update',   'Api\JurusanController@update');
     });
 
     Route::group(['prefix' => 'kategori'], function(){
@@ -44,5 +46,15 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('/delete',  'Api\BarangController@delete');
         Route::post('/show',    'Api\BarangController@show');
         Route::post('/update',  'Api\BarangController@update');
+    });
+
+    Route::group(['prefix' => 'history'], function(){
+        Route::post('/',        'Api\HistoryController@index');
+        Route::post('/show',    'Api\HistoryController@show');
+    });
+
+    Route::group(['prefix' => 'ruangan-barang'], function(){
+        Route::post('/',        'Api\RuanganBarangControll@index');
+        Route::post('/show',    'Api\RuanganBarangController@show');
     });
 });

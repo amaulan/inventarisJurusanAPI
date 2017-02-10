@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         'username' => 'admin',
         'password' => bcrypt('admin'),
         'fullname' => 'Admin',
+        'token'    => str_random(1000),
         'role_id'  => 1,
       ]);
 
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
         'username' => 'user_1',
         'password' => app('hash')->make('user_1'),
         'fullname' => 'User',
+        'token'    => str_random(1000),
         'role_id'  => 2,
       ]);
     }

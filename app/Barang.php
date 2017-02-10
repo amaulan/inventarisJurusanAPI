@@ -19,4 +19,14 @@ class Barang extends Model
                     'barang_id'
                 );
     }
+
+    public function supplier()
+    {
+             return $this->belongsToMany(
+                    Ruangan::class,
+                    'supplier_barang',
+                    'supplier_id',
+                    'barang_id'
+                );
+    }
 }

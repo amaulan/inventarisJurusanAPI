@@ -54,7 +54,12 @@ Route::group(['prefix' => 'api','middleware' => ['checklogin']], function() {
     });
 
     Route::group(['prefix' => 'ruangan-barang'], function(){
-        Route::post('/',        'Api\RuanganBarangControll@index');
+        Route::post('/',        'Api\RuanganBarangController@index');
         Route::post('/show',    'Api\RuanganBarangController@show');
+    });
+
+    Route::group(['prefix' => 'supplier-barang'], function(){
+        Route::post('/',        'Api\SupplierBarang@index');
+        Route::post('/show',    'Api\SupplierBarang@show');
     });
 });

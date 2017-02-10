@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Ruangan;
+use App\Supplier;
+use App\Barang;
 use App\History;
 
-class RuanganBarangController extends Controller
+class SupplierBarang extends Controller
 {
     public static $table;
     public static $log;
 
-    public function __construct(Ruangan $ruangan, History $history)
+    public function __construct(Supplier $supplier, History $history)
     { 
-        self::$table = $ruangan;
+        self::$table = $supplier;
         self::$log   = $history;
     }
     public function index()
@@ -40,5 +41,4 @@ class RuanganBarangController extends Controller
 
         return $res;
     }
-
 }

@@ -11,4 +11,14 @@ class Supplier extends Model
         'supplier_name',
         'keterangan'
     ];
+
+    public function barang()
+    {
+        return $this->belongsToMany(
+            Barang::class,
+            'supplier_barang',
+            'supplier_id',
+            'barang_id'
+        );
+    }
 }
